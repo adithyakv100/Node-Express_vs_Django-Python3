@@ -1,0 +1,47 @@
+version: "3"
+services:
+  nginx:
+    image: nginx:latest
+    container_name: nginx_container_stickers
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./nginx:/etc/nginx/conf.d
+    depends_on:
+      - web
+  web:
+    build: .
+    container_name: knex_web_container_stickers
+    command: bash -c "pm2-runtime start app.js -i -1"
+    depends_on:
+      - db
+    # volumes:
+    #   - ./mounted_source_code:/source_code
+    expose:
+      - "3000"
+    ports:
+      - "3000:3000"
+
+    environment:
+      - DEBUG=0
+
+    # deploy:
+    #   resources:
+    #     limits:
+    #       cpus: '0.50'
+    #       memory: 50M
+    #     reservations:
+    #       cpus: '0.25'
+    #       memory: 20M
+
+
+
+
+  db:
+    image: postgres:latest
+    container_name: postgres_container_knex_stickers
+    # environment:
+      # - POSTGRES_USER=postgres
+      # - POSTGRES_DB=docker_db_todos
+    # ports:
+    #   - "5432:5432"
