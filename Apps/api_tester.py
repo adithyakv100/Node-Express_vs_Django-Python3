@@ -108,7 +108,7 @@ if __name__ == '__main__':
     
     # start concurrent user threads
     for i in range(concurrent_users):
-        thread = threading.Thread(target=django_create_task_thread_function, kwargs={'loop_times': loop_times, 'user_id' : i}, daemon=True)         
+        thread = threading.Thread(target=node_create_task_thread_function, kwargs={'loop_times': loop_times, 'user_id' : i}, daemon=True)         
         thread.start()
         workers.append(thread)
 
