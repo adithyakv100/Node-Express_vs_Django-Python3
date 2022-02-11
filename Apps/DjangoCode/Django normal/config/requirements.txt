@@ -11,7 +11,7 @@ Markdown==3.1.1
 mysql-connector-python==8.0.18
 pep8==1.7.1
 Pillow==6.2.1
-protobuf==3.11.0
+protobuf==3.15.0
 pycodestyle==2.5.0
 PyJWT==1.7.1
 python-crontab==2.4.0
